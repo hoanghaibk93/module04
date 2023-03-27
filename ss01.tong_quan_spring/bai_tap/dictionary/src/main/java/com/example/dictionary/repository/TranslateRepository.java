@@ -21,6 +21,6 @@ public class TranslateRepository implements ITranslateRepository {
                 return entry.getValue();
             }
         }
-        return "Không tìm thấy";
+        return "Not found";
     }
 }
