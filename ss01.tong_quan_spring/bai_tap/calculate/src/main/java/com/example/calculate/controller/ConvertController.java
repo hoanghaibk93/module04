@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class CalculateUsdToVnd {
+public class ConvertController {
     IConvertService service = new ConvertService();
 
     @GetMapping("/calculate")
@@ -24,6 +24,5 @@ public class CalculateUsdToVnd {
         model.addAttribute("usd", usd);
         model.addAttribute("result", result);
         return "calculate";
-
     }
 }

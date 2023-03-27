@@ -10,8 +10,9 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<body>
+<body class="container-sm border border-primary" style="height: 300px">
 <h1>CONVERT USD TO VND</h1>
 <form class="form-inline" method="post" action="/calculate/result">
     <div class="form-group">
@@ -22,10 +23,9 @@
         <label for="2">USD</label>
         <input type="text" name="usd" id="2" class="form-control" value="${usd}" aria-describedby="helpId">
     </div>
-    <button type="submit" class="btn btn-primary">submit</button>
+    <button type="submit" class="btn btn-primary">Convert</button>
 </form>
-<h3>result: ${result} vnd </h3>
-
+<h3>Result: ${result} vnd </h3>
 </div>
 </body>
 </html>
