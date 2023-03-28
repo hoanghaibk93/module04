@@ -1,4 +1,6 @@
-package com.example.dictionary.repository;
+package com.example.dictionary.repository.impl;
+
+import com.example.dictionary.repository.ITranslateRepository;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -14,7 +14,7 @@
 </head>
 <body class="container-sm border border-primary" style="height: 300px; margin-top: 50px">
 <h1 style="text-align: center">Calculator</h1>
-<form method="post" action="/calculate/result">
+<form method="post" action="/calculate">
     <div class="form-group">
         <label for="1"></label>
         <input type="text" name="numberOne" id="1" class="form-control" placeholder="" aria-describedby="helpId"

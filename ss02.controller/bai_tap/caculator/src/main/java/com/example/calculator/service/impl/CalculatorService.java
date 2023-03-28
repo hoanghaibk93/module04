@@ -1,4 +1,4 @@
-package com.example.calculator.service.calculaterImpl;
+package com.example.calculator.service.impl;
 
 import com.example.calculator.service.ICalculatorService;
 
