@@ -1,6 +1,6 @@
 package com.example.calculate.controller;
 
-import com.example.calculate.service.ConvertService;
+import com.example.calculate.service.impl.ConvertService;
 import com.example.calculate.service.IConvertService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ConvertController {
-    IConvertService service = new ConvertService();
+    private IConvertService service = new ConvertService();
 
     @GetMapping("/calculate")
     public String calculate() {

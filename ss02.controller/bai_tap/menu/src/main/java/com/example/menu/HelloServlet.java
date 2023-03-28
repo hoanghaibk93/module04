@@ -1,4 +1,4 @@
-package com.example.calculate;
+package com.example.menu;
 
 import java.io.*;
 import javax.servlet.http.*;
