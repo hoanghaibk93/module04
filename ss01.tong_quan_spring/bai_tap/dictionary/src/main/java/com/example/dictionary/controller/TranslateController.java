@@ -17,12 +17,11 @@ public class TranslateController {
         return "translate";
     }
 
-    @PostMapping("/translate/result")
+    @PostMapping("/translate")
     public String calculate(@RequestParam(name = "english") String wordEnglish, Model model) {
         String result = service.translate(wordEnglish);
         model.addAttribute("english", wordEnglish);
         model.addAttribute("result", result);
         return "translate";
-
     }
 }

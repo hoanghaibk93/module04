@@ -13,7 +13,7 @@
 </head>
 <body class="container-sm border border-primary" style="height: 300px">
 <h1>Dictionary</h1>
-<form class="form-input " method="post" action="/translate/result">
+<form class="form-input " method="post" action="/translate">
   <div class="form-group">
     <label for="1">English</label>
     <input type="text" name="english" id="1" class="form-control" value="${english}" aria-describedby="helpId">
