@@ -12,7 +12,7 @@
 
 
     <!--    config thư mục chưa code của mọi người-->
-    <context:component-scan base-package="com.example.management_product.controller"/>
+    <context:component-scan base-package="com.example.management_product"/>
     <mvc:annotation-driven/>
 
 

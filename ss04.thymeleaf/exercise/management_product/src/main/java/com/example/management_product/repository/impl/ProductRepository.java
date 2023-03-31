@@ -2,11 +2,15 @@ package com.example.management_product.repository.impl;
 
 import com.example.management_product.model.Product;
 import com.example.management_product.repository.IProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class ProductRepository implements IProductRepository {
+
     static List<Product> productList = new ArrayList<>();
 
     static {
@@ -53,7 +57,7 @@ public class ProductRepository implements IProductRepository {
     public List<Product> searchByName(String name) {
         List<Product> productList = new ArrayList<>();
         for (Product product : findAll()) {
-            if (product.getName().equals(name)) {
+            if (product.getName().toLowerCase().contains(name.toLowerCase())) {
                 productList.add(product);
             }
         }
