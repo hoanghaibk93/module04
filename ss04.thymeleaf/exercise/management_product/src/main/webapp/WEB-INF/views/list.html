@@ -15,7 +15,8 @@
 <form action="/product/search" th:object="${product}">
     <div class="form-group">
         <label for="1"></label>
-        <input type="text" class="form-control" name="name" id="1" aria-describedby="helpId" placeholder="Search product by name">
+        <input type="text" class="form-control" name="name" id="1" aria-describedby="helpId"
+               placeholder="Search product by name">
     </div>
 
 </form>
@@ -36,7 +37,7 @@
     <tbody>
     <tr th:each="product, temp : ${productList}">
         <td th:text="${temp.count}"></td>
-        <td th:text="${product.id}" ></td>
+        <td th:text="${product.id}"></td>
         <td th:text="${product.name}"></td>
         <td th:text="${product.price}"></td>
         <td th:text="${product.describe}"></td>
@@ -47,8 +48,6 @@
     </tr>
     </tbody>
 </table>
-<p th:if="${notice}">
-    <span class="text-danger display-2" th:text="${notice}"></span>
-</p>
+<p class="text-danger display-2" th:text="${notice}"></p>
 </body>
 </html>

@@ -66,7 +66,9 @@ public class ProductController {
     @GetMapping("/product/search")
     public String searchByName(@RequestParam String name, Model model) {
         model.addAttribute("productList", service.searchByName(name));
-        model.addAttribute("notice", "Not Found");
+        if (service.searchByName(name).isEmpty()) {
+            model.addAttribute("notice", "Not Found");
+        }
         return "list";
     }
 }
