@@ -21,7 +21,7 @@ public class ProductController {
     public String showListProduct(Model model) {
         List<Product> productList = service.findAll();
         model.addAttribute("productList", productList);
-        return "list";
+        return "/list";
     }
 
     @RequestMapping(value = "/product/create", method = RequestMethod.GET)
@@ -38,8 +38,8 @@ public class ProductController {
     }
 
     @PostMapping("/product/delete")
-    public String delete(@RequestParam int idDelete, RedirectAttributes redirect) {
-        service.delete(idDelete);
+    public String delete(@RequestParam int delete, RedirectAttributes redirect) {
+        service.delete(delete);
         redirect.addFlashAttribute("message", "Delete Successful");
         return "redirect:/product";
     }
