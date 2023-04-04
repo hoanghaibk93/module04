@@ -84,6 +84,7 @@ public class BlogController {
     @GetMapping("/listType/{id}")
     public String searchByTypeOfBlog(@PathVariable Integer id, Model model, @RequestParam(defaultValue = "0") int page) {
         model.addAttribute("blogList", blogService.findByType(id, PageRequest.of(page, 2)));
+        model.addAttribute("listType", typeOfBlogService.findAll());
         return "list";
     }
 }
