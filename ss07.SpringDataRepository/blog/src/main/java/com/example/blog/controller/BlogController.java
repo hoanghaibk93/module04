@@ -22,9 +22,10 @@ public class BlogController {
     ITypeOfBlogService typeOfBlogService;
 
     @GetMapping
-    public String showList(Model model, @RequestParam(defaultValue = "0")int page) {
+    public String showList(Model model, @RequestParam(defaultValue = "0") int page) {
         Sort sort = Sort.by("dateCreateBlog").descending();
-        model.addAttribute("blogList", blogService.findAll(PageRequest.of(page,2,sort)));
+        model.addAttribute("blogList", blogService.findAll(PageRequest.of(page, 2, sort)));
+        model.addAttribute("listType", typeOfBlogService.findAll());
         return "list";
     }
 
@@ -75,8 +76,14 @@ public class BlogController {
     }
 
     @GetMapping("/search")
-    public String search(@RequestParam(value = "name") String name, Model model) {
-        model.addAttribute("blogList", blogService.findByName(name));
+    public String search(@RequestParam(value = "name") String name, Model model, @RequestParam(defaultValue = "0") int page) {
+        model.addAttribute("blogList", blogService.findByName(name, PageRequest.of(page, 2)));
+        return "list";
+    }
+
+    @GetMapping("/listType/{id}")
+    public String searchByTypeOfBlog(@PathVariable Integer id, Model model, @RequestParam(defaultValue = "0") int page) {
+        model.addAttribute("blogList", blogService.findByType(id, PageRequest.of(page, 2)));
         return "list";
     }
 }

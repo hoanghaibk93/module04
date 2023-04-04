@@ -3,6 +3,7 @@ package com.example.blog.service;
 import com.example.blog.model.Blog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -15,5 +16,7 @@ public interface IBlogService {
 
     void delete(Integer id);
 
-    List<Blog> findByName(String name);
+    Page<Blog> findByName(String name, PageRequest pageRequest);
+
+    Page<Blog> findByType(Integer id, PageRequest pageRequest);
 }

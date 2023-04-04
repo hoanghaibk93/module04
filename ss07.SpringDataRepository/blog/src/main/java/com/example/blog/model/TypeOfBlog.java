@@ -15,10 +15,6 @@ public class TypeOfBlog {
     public TypeOfBlog() {
     }
 
-    public TypeOfBlog(String nameTypeOfBlog) {
-        this.nameTypeOfBlog = nameTypeOfBlog;
-    }
-
     public TypeOfBlog(Integer idTypeOfBlog, String nameTypeOfBlog) {
         this.idTypeOfBlog = idTypeOfBlog;
         this.nameTypeOfBlog = nameTypeOfBlog;

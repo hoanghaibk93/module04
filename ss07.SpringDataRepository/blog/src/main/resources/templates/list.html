@@ -7,12 +7,24 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body class="container-sm">
+
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+            aria-expanded="false">
+        Category
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li th:each="type : ${listType}">
+            <a class="dropdown-item" th:href="@{/blog/listType/{idTypeOfBlog}(idTypeOfBlog=${type.idTypeOfBlog})}"
+               th:text="${type.nameTypeOfBlog}">Action</a>
+        </li>
+    </ul>
+</div>
+
 <h3 class="text-center">List Blog</h3>
 <h4><a th:href="@{/blog/create}">Create Blog</a></h4>
-
 <form action="/blog/search">
     <div class="form-group">
-        <label for=""></label>
         <input type="text"
                class="form-control form-control-sm" name="name" id="" aria-describedby="helpId"
                placeholder="search by name">
@@ -70,7 +82,6 @@
                             <form action="/blog/delete" method="post">
                                 <input hidden=type="text" id="idDelete" name="delete">
                                 <span>Do you want to delete ?</span> <span id="nameDelete"></span>
-
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
                                     </button>
@@ -85,17 +96,22 @@
     </tr>
     </tbody>
 </table>
-<span>
-    <a th:if="${blogList.hasPrevious()}" th:href="@{/blog(page =${blogList.number - 1})}">Trước</a>
+<div class="pagination text-center">
+<span class="page-item">
+    <a class="page-link" th:if="${blogList.hasPrevious()}" th:href="@{/blog(page=${blogList.number - 1})}">Previous</a>
 </span>
-<span th:text="${blogList.number +'/' + (blogList.getTotalPages()-1)}"></span>
-<span>
-    <a th:if="${blogList.hasNext()}" th:href="@{/blog(page=${blogList.number +1})}">Sau</a>
+    <!--<span th:text="${blogList.number +'/' + (blogList.getTotalPages()-1)}"></span>-->
+    <span class="page-item" th:each="pageNo: ${#numbers.sequence(0, blogList.getTotalPages() -1)}">
+<a class="page-link" th:href="@{/blog(page=${pageNo})}" th:text="${pageNo}"></a>
 </span>
-<!--<form action="/blog" method="get">-->
-
-<!--</form>-->
-
+    <span class="page-item">
+    <a class="page-link" th:if="${blogList.hasNext()}" th:href="@{/blog(page=${blogList.number + 1})}">Next</a>
+</span>
+    <form action="/blog" id="pageNumber">
+        <input style="width: 50px" class="form-control" type="number" name="page"
+               onchange="document.getElementById('pageNumber').submit();">
+    </form>
+</div>
 <script>
     function information(id, name) {
         document.getElementById("idDelete").value = id;

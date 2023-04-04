@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class TypeOfBlogService implements ITypeOfBlogService {
     @Autowired
     ITypeOfBlogRepository typeOfBlogRepository;
+
     @Override
     public List<TypeOfBlog> findAll() {
         return (List<TypeOfBlog>) typeOfBlogRepository.findAll();
