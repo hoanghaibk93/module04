@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -25,18 +22,37 @@ public class ServiceController {
         model.addAttribute("listSong", songService.findAll());
         return "list";
     }
+
     @GetMapping("/create")
-    public String showFormCreate(Model model){
+    public String showFormCreate(Model model) {
         model.addAttribute("song", new Song());
         return "create";
     }
+
     @PostMapping("/create")
-    public String create(@Valid @ModelAttribute Song song, RedirectAttributes redirect, BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()){
+    public String create(@Valid @ModelAttribute Song song, BindingResult bindingResult, RedirectAttributes redirect, Model model) {
+        if (bindingResult.hasErrors()) {
             return "create";
         } else {
-           model.addAttribute("song", song);
-           return "redirect:/song";
+            songService.save(song);
+            model.addAttribute("song", song);
+            return "redirect:/song";
+        }
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable int id, Model model) {
+        model.addAttribute("song", songService.findById(id));
+        return "edit";
+    }
+
+    @PostMapping("/edit")
+    public String showEditForm(@Valid @ModelAttribute Song song, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "edit";
+        } else {
+            songService.save(song);
+            return "redirect:/song";
         }
     }
 }

@@ -15,7 +15,7 @@ public class User {
     @Column(name = "id")
     private Integer id;
     @Column(name = "first_name", nullable = false)
-    @Size(min = 5, max = 45 ,message = "Độ dài tối thiểu từ 5 đến 45 ký tự")
+    @Size(min = 5, max = 45, message = "Độ dài tối thiểu từ 5 đến 45 ký tự")
     private String firstName;
     @Column(name = "last_name", nullable = false)
     @Size(min = 5, max = 45, message = "Độ dài tối thiểu từ 5 đến 45 ký tự")
@@ -23,10 +23,10 @@ public class User {
     @Column(name = "phone_number", nullable = false)
     @Pattern(regexp = "\\d{10}", message = "Số điện thoại không đủ 10 số")
     private String phoneNumber;
-    @Min(value = 18 ,message = "Độ tuổi phải hơn 18 tuổi")
+    @Min(value = 18, message = "Độ tuổi phải hơn 18 tuổi")
     @NotNull(message = "tuổi không được phép để trống")
     private Integer age;
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$" ,message = "Không đúng định dạng example@gmail")
+    @Pattern(regexp = "^[\\w]+@[\\w]+\\.[\\w]+$", message = "Không đúng định dạng example@gmail")
     private String email;
 
     public User() {

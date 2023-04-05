@@ -12,17 +12,18 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotBlank(message = "không được để trống")
+    @Pattern(regexp = "\\w+", message = "Bài hát không chưa ký tự đặc biệt")
     @Size(max = 800, message = "Độ dài bài hát không vượt quá 800 ký tự")
-    @Pattern(regexp = "\\w{10}", message = "Bài hát không chưa ký tự đặc biệt")
     private String name;
-
     @NotBlank(message = "không được để trống")
     @Size(max = 300, message = "Độ dài tên ca sỉ không vượt quá 300 ký tự")
-    @Pattern(regexp = "\\w{10}", message = "Tên ca sĩ không chưa ký tự đặc biệt")
+    @Pattern(regexp = "\\w+", message = "Tên ca sĩ không chưa ký tự đặc biệt")
+
     private String singer;
     @NotBlank(message = "không được để trống")
     @Size(max = 1000, message = "Thể loại âm nhạc không vượt quá 1000 ký tự")
-    @Pattern(regexp = "\\w{10}", message = "Tên ca sĩ không chưa ký tự đặc biệt")
+    @Pattern(regexp = "[\\w,]+", message = "Tên ca sĩ không chưa ký tự đặc biệt")
+
     private String type;
 
     public Song() {
