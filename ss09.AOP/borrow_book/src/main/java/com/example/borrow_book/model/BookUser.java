@@ -3,36 +3,48 @@ package com.example.borrow_book.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="book_user")
+@Table(name = "book_user")
 public class BookUser {
-    @EmbeddedId
-    BookUserKey id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_book_user")
+    private Integer id;
     @ManyToOne
-    @MapsId("id_book")
-    @JoinColumn(name="id_book")
+    @JoinColumn(name = "id_book")
     private Book book;
 
     @ManyToOne
-    @MapsId("id_user")
-    @JoinColumn(name="id_user")
+    @JoinColumn(name = "id_user")
     private User user;
- private Integer IdBorrowBook;
+    private Integer idBorrowBook = (int) (Math.random() * (99999 - 10000 + 1) + 10000);
 
     public BookUser() {
+
     }
 
-    public BookUser(BookUserKey id, Book book, User user, Integer idBorrowBook) {
+    public BookUser(Book book) {
+        this.book = book;
+    }
+
+    public BookUser(Book book, User user, Integer idBorrowBook) {
+        this.book = book;
+        this.user = user;
+        this.idBorrowBook = idBorrowBook;
+    }
+
+    public BookUser(Integer id, Book book, User user, Integer idBorrowBook) {
         this.id = id;
         this.book = book;
         this.user = user;
-        IdBorrowBook = idBorrowBook;
+        this.idBorrowBook = idBorrowBook;
     }
 
-    public BookUserKey getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(BookUserKey id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -53,10 +65,10 @@ public class BookUser {
     }
 
     public Integer getIdBorrowBook() {
-        return IdBorrowBook;
+        return idBorrowBook;
     }
 
     public void setIdBorrowBook(Integer idBorrowBook) {
-        IdBorrowBook = idBorrowBook;
+        this.idBorrowBook = idBorrowBook;
     }
 }

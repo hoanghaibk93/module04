@@ -12,8 +12,6 @@ public class User {
     private Integer idUser;
     @Column(name = "name_user")
     private String nameUser;
-    @ManyToMany(mappedBy = "userList")
-    private List<Book> bookList;
 
     public User() {
     }
@@ -21,12 +19,6 @@ public class User {
     public User(Integer idUser, String nameUser) {
         this.idUser = idUser;
         this.nameUser = nameUser;
-    }
-
-    public User(Integer idUser, String nameUser, List<Book> bookList) {
-        this.idUser = idUser;
-        this.nameUser = nameUser;
-        this.bookList = bookList;
     }
 
     public Integer getIdUser() {
@@ -43,13 +35,5 @@ public class User {
 
     public void setNameUser(String nameUser) {
         this.nameUser = nameUser;
-    }
-
-    public List<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
     }
 }

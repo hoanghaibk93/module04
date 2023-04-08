@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    IBookService bookService;
+    private IBookService bookService;
     @Autowired
-    IUserService userService;
+    private IUserService userService;
+
     @GetMapping
-    public String findAllUser(Model model){
+    public String findAllUser(Model model) {
         model.addAttribute("listUser", userService.findAllUser());
         return "list_user";
 

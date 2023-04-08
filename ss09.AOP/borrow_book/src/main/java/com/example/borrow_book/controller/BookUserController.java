@@ -7,19 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/information")
 public class BookUserController {
     @Autowired
-    IBookService bookService;
-    @Autowired
-    IUserService userService;
-    @Autowired
-    IBookUserService bookUserService;
+    private IBookUserService bookUserService;
 
     @GetMapping
     public String findAllBookUser(Model model) {
@@ -27,14 +21,12 @@ public class BookUserController {
         return "list_book_user";
     }
 
-    @GetMapping("/{idBook}/{idUser}")
-    public String borrowBook(@PathVariable Integer idBook, @PathVariable Integer idUser) {
-        Integer quantity = bookService.findByIdBook(idBook).getQuantity();
-        if (quantity <= 0){
+    @PostMapping("/return")
+    public String returnBook(@RequestParam Integer idBookUser, Model model) {
+        if (!bookUserService.deleteBookUser(idBookUser)) {
+            model.addAttribute("message", "Book code is not correct");
             return "error-404";
         } else {
-            bookUserService.borrowBook(idBook, idUser);
-            bookService.saveBook(bookService.findByIdBook(idBook));
             return "redirect:/information";
         }
     }

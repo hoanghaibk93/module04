@@ -1,8 +1,9 @@
-package com.example.borrow_book.service;
+package com.example.borrow_book.service.impl;
 
 import com.example.borrow_book.model.Book;
 import com.example.borrow_book.model.User;
 import com.example.borrow_book.repository.IUserRepository;
+import com.example.borrow_book.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,6 @@ public class UserService implements IUserService {
 
     @Override
     public void deleteUser(Integer id) {
-      userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 }

@@ -9,6 +9,7 @@ public interface IBookUserService {
     List<BookUser> findAllBookUser();
     BookUser findByIdBookUser(Integer id);
     void saveBookUser(BookUser bookUser);
-    void deleteBookUser(Integer id);
+    boolean deleteBookUser(Integer id);
     void borrowBook(Integer idBook, Integer idUser);
+//    void returnBook(Integer id);
 }

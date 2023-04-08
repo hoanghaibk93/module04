@@ -17,9 +17,8 @@
     </thead>
     <tbody>
     <tr th:each="user : ${listUser}">
-        <td th:text="${user.getIdUser()}" ></td>
+        <td th:text="${user.getIdUser()}"></td>
         <td th:text="${user.getNameUser()}"></td>
-<!--        <td><a th:href="@{/user/{idUser}(idUser = ${user.getIdUser()})}">borrow</a></td>-->
     </tr>
     </tbody>
 </table>
