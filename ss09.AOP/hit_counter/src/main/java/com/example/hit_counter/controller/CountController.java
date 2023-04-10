@@ -16,6 +16,6 @@ public class CountController {
     @GetMapping("/")
     public String get(@ModelAttribute("counter") Counter counter){
         counter.increment();
-        return "index";
+        return "count";
     }
 }
