@@ -15,7 +15,7 @@
                 <h5 class="card-title" th:text="${product.name}"></h5>
                 <h5 class="card-title" th:text="${product.price}"></h5>
                 <p th:text="${product.description}" class="card-text"></p>
-                <a th:href="@{/add/__${product.id}__(action='list')}" class="btn btn-primary">Mua Ngay</a>
+                <a th:href="@{/add/__${product.id}__(action='show')}" class="btn btn-primary">Mua Ngay</a>
             </div>
         </div>
     </div>
