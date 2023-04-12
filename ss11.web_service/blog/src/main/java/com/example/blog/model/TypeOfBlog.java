@@ -35,4 +35,5 @@ public class TypeOfBlog {
     public void setNameTypeOfBlog(String nameTypeOfBlog) {
         this.nameTypeOfBlog = nameTypeOfBlog;
     }
+    
 }

@@ -19,6 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/blog")
+@CrossOrigin({"*"})
 public class BlogController {
     @Autowired
     IBlogService blogService;
